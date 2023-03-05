@@ -1,0 +1,53 @@
+{% extends './base.html' %}
+{% import "_macros.html" as macros %}
+
+{% block main %}
+<section class="blogs">
+    <div class="blogs__container">
+        {% for blog in items%}
+        <div class="blogs__card">
+            <picture class="blogs__img">
+                <img src="{{ url_for('blogs.get_imgBlog', filename=blog.img_blog ) }}">
+            </picture>
+            <div class="blogs__intro">
+                <div class="card__author">
+                    <img src="/src/assets/icons/person.ico" alt="">
+                    <div class="card__data">
+                        <p>{{ blog.author.username }}</p>
+                        <span>poner fecha aqui</span>
+                    </div>
+                </div>
+                <h3 class="card__title">{{ blog.title }}</h3>
+                <p class="card__paragraph">{{ blog.body }}</p>
+                <hr class="card__line">
+                <div class="card__statistic">
+                    <p><span>0</span> visualizaciones</p>
+                    <p><span>0</span> comentarios</p>
+                </div>
+            </div>
+        </div>
+        <div class="blogs__footer">
+            {% if current_user.is_authenticated %}
+            <a href="{{ url_for('blogs.editBlog', id=blog.id) }}">
+                <span class="label-primary">Editar</span>
+            </a>
+            <a id="btnBlogDelete" data-Atributo="{{blog.id}}" href="{{ url_for('blogs.deleteBlog', id=blog.id) }}">
+                <span class="label-primary">Eliminar</span>
+            </a>
+            {% endif %}
+        </div>
+        {% endfor %}
+
+    </div>
+</section>
+<div class="pagination">
+    {{ macros.pagination_widget(pagination, 'blogs.see_blog') }}
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="{{ url_for('static', filename='js/funciones0.js') }}"></script>
+{% endblock %}
+
+
+

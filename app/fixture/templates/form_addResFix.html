@@ -1,0 +1,36 @@
+{% extends './base.html' %}
+
+{% block main %}
+<div class="versusform">
+    <div class="versusform__container">
+        <h2 class="versusform__title">Agregar Resultado</h2>
+        <div>
+            <form method="POST" novalidate class="versusform__form">
+                <div class="versusform__teamsUpd">
+                    <div class="local">
+                        <span>{{ fix.Local.teamName}}</span>
+                        <input type="text" name="golA" placeholder="Goles" value={{ fix.golLocal }}>
+                    </div>
+                    <strong class="vs"> VS </strong>
+                    <div class="visita">
+                        <span>{{ fix.Visita.teamName}}</span>
+                        <input type="text" name="golB" placeholder="Goles" value={{ fix.golVisita }}>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btnVersus">Guardar</button>
+                {% if fix.estado == "cancelado" %}
+                <a href="{{ url_for('fixture.cancelfix',id=fix.id) }}">Deshacer</a>
+                {% else %}
+                <a href="{{ url_for('fixture.cancelfix',id=fix.id) }}">Cancelado</a>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}

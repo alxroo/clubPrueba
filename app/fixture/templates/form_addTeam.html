@@ -1,0 +1,36 @@
+{% extends './base.html' %}
+
+{% block main %}
+
+<div class="team__form">
+    <h2 class="team__title">Agregar Equipo</h2>
+    <form method="POST" enctype="multipart/form-data" novalidate>
+        {{ form.hidden_tag() }}
+        <div class="team__boxform">
+            {{ form.team.label(class="team__label") }}
+            {{ form.team(class="team__input") }}
+            {{ form.img_logo.label(class="team__label") }}
+            {{ form.img_logo(class="team__input") }}
+        </div>
+        {{ form.submit(class="team__button")|safe }}
+    </form>
+</div>
+<div class="team__table">
+    <h2 class="team__title">Equipos Actuales</h2>
+    <div class="team__boxlist">
+        {% for equipo in equipos %}
+            <div class="team__item">
+                <img src="{{ url_for('fixture.get_file', filename=equipo.logo ) }}" alt="" class="logo">
+                <span class="teanName">{{ equipo.teamName }}</span>
+                <a href="{{ url_for('fixture.updateTeam', id=equipo.id ) }}" class="btnUpdate" id="btnTeamUpdate" data-Atributo="{{equipo.id}}">Modificar</a>
+                <a href="" class="btnEliminar" id="btnTeamDelete" data-Atributo="{{equipo.id}}">Eliminar</a>
+            </div>           
+        {% endfor%}
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script src="{{ url_for('static', filename='js/funciones.js') }}"></script>
+{% endblock %}

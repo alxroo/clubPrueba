@@ -20,11 +20,6 @@ class DevelopmentConfig(Config):
     MAIL_PASSWORD = ""
 
 
-config = {
-    'development':DevelopmentConfig
-}
-
-
 
 
 

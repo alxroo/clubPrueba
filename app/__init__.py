@@ -26,6 +26,12 @@ def create_app(config_name):
 
     from .notices import notices as notices_blueprint
     app.register_blueprint(notices_blueprint)
+
+    from .fixture import fixture as fixture_blueprint
+    app.register_blueprint(fixture_blueprint)
+        
+    from .blogs import blogs as blogs_blueprint
+    app.register_blueprint(blogs_blueprint)
     
     with app.app_context():
         db.create_all()

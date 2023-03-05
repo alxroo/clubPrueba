@@ -1,0 +1,120 @@
+{% extends './base.html' %}
+
+{% block main %}
+<div class="versusform">
+    <div class="versusform__container">
+        <h2 class="versusform__title">Equipos</h2>
+        <form method="POST" novalidate class="versusform__form">
+                <div class="versusform__teams">
+                    <label for="equipoA">Local</label>
+                    <select name="equipoLocal" id="">
+                    {% for equipo in equipos %}
+                        <option value={{equipo.id}}>{{equipo.teamName}}</option>
+                    {% endfor %}
+                    </select>
+                    <label for="equipoB">Visita</label>
+                    <select name="equipoVisita" id="">
+                    {% for equipo in equipos %}
+                        <option value={{equipo.id}}>{{equipo.teamName}}</option>
+                    {% endfor %}
+                    </select>
+                </div>
+            <input type="text" name="lugar" placeholder="Lugar" class="place">
+            <div class="versusform__date">
+                <input type="date" name ="fecha" placeholder="fecha" class="date">
+                <input type="time" name="hora" placeholder="hora" class="hour">
+            </div>
+           
+            <button type="submit" class="btnVersus">Guardar</button>
+        </form>
+    </div>
+</div>
+
+<div class="versusSchedule">
+    <h2>Cronograma</h2>
+    <div class="versusSchedule__container">
+        <div class="versusSchedule__finished">
+            <h3 class="versusSchedule__title">Finalizados</h3>
+            {% for versus in partidos %}
+                {% if datos[loop.index-1] < 0 %}
+                <div class="versusSchedule__itemPas">
+                    <div class="date">
+                        <span>Fecha y hora: {{ versus.fecha_hora }}</span>
+                        <span>Lugar: {{ versus.lugar }}</span>
+                    </div>   
+                    <div class="versus">
+                        <div class="local">
+                            <span><img src="{{ url_for('fixture.get_file', filename=versus.Local.logo ) }}" class="logo"></span>
+                            <span>{{ versus.Local.teamName }}</span>
+                        </div>
+                        <span class="vs">VS</span>
+                        <div class="visita">
+                            <span><img src="{{ url_for('fixture.get_file', filename=versus.Visita.logo ) }}" class="logo"></span>
+                            <span>{{ versus.Visita.teamName }}</span>
+                        </div>
+                    </div>
+                    <div class="versusSchedule__btns">
+                        <a href="{{ url_for('fixture.add_result',id=versus.id) }}">Agregar/Modificar Resultado</a>
+                        <a href="{{ url_for('fixture.deleteVersus',id=versus.id) }}" id="btndDelFixture" data-Atributo="{{versus.id}}">Eliminar</a>
+                        {% if versus.estado == "cancelado" %}
+                            <span style="color:red;">Cancelado</span>
+                        {% endif %}
+                    </div>
+                    
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        
+        
+        <div class="versusSchedule__next">
+            <h3 class="versusSchedule__title">Siguientes</h3>
+            {% for versus in partidos %}
+                {% if datos[loop.index-1] > 0%}
+                <div class="versusSchedule__itemNext">
+                    <div class="date">
+                        <span>Fecha y hora: {{ versus.fecha_hora }}</span>
+                        <span>Lugar: {{ versus.lugar }}</span>
+                    </div>
+                    <div class="versus">
+                        <div class="local">
+                            <span><img src="{{ url_for('fixture.get_file', filename=versus.Local.logo ) }}" class="logo"></span>
+                            <span>{{ versus.Local.teamName }}</span>
+                        </div>
+                        <span class="vs"> VS </span>
+                        <div class="visita">
+                            <span><img src="{{ url_for('fixture.get_file', filename=versus.Visita.logo ) }}" class="logo"></span> 
+                            <span>{{ versus.Visita.teamName }}</span>
+                        </div>
+                    </div>
+                    <div class="versusSchedule__btns">
+                        <a href="{{ url_for('fixture.deleteVersus',id=versus.id) }}" id="btnDelFixture" data-Atributo="{{versus.id}}">Eliminar</a>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div> 
+    
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+{% block script %}
+<script src="{{ url_for('static', filename='js/funciones0.js') }}"></script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+        
+
+        
+    

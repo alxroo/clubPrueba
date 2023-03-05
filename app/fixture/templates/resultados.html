@@ -1,0 +1,117 @@
+{% extends './base.html' %}
+
+{% block main %}
+<section class="fixture">
+    <div class="fixture__container">
+        <h2 class="fixture__title">Fixture</h2>
+        <div class="fixture__table">
+            <div class="fixture__versus">
+                {% for versus in partidos %}
+                    {% if versus.estado == "pendiente" %}
+                    <div class="fixture__date">
+                        <p>Fecha: <span>{{ versus.fecha_hora }}</span></p>
+                        <p>Hora: <span>Lorem</span></p>
+                    </div>
+                    <div class="fixture__teams">
+                        <div class="fixture__teamA">
+                            <p>{{ versus.Local.teamName }}</p>
+                            <img src="{{ url_for('fixture.get_file', filename=versus.Local.logo ) }}" class="logo">
+                        </div>
+                        <div class="fixture__vs">
+                            <span>VS</span>
+                        </div>
+                        <div class="fixture__teamB">
+                            <img src="{{ url_for('fixture.get_file', filename=versus.Visita.logo ) }}" class="logo">
+                            <p>{{ versus.Visita.teamName }}</p>
+                        </div>
+                    </div>
+                    <div class="fixture__place">
+                        <p>Lugar: <span>{{ versus.lugar }}</span></p>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+
+        </div>
+    </div>
+</section>
+<section class="results">
+    <div class="results__container">
+        <h2 class="results__title">Resultados</h2>
+        <div class="results__table">
+            {% for versus in fixture %}
+            <div class="results__result">
+                {% if versus.estado=="culminado" %}
+                <div class="results__info">
+                    <div class="results__date">
+                        <p>Fecha: <span>{{ versus.fecha_hora }}</span></p>
+                    </div>
+                    <div class="results__place">
+                        <p>Lugar: <span>{{ versus.lugar }}</span></p>
+                    </div>
+                </div>
+                <div class="results__teams">
+                    <div class="results__teamA">
+                        <p>{{ versus.Local.teamName }}</p>
+                        <img src="{{ url_for('fixture.get_file', filename=versus.Local.logo ) }}">
+                    </div>
+                    <div class="results__score">
+                        <span>{{ versus.golLocal }}</span><span>-</span><span>{{ versus.golVisita }}</span>
+                    </div>
+                    <div class="results__teamB">
+                        <img src="{{ url_for('fixture.get_file', filename=versus.Visita.logo ) }}">
+                        <p>{{ versus.Visita.teamName}}</p>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="positionsTable">
+    <div class="positionsTable__container">
+        <h2 class="positionsTable__title">Tabla de posiciones</h2>
+        <div class="positionsTable__table">
+            <table class="positionsTable__result">
+                <!-- <caption>titulo tabla</caption> -->
+                <!-- <colgroup span="8" class="columns"></colgroup> -->
+                <thead>
+                    <tr class="table__title">
+                        <th>Pos</th>
+                        <th class="table__team">Equipo</th>
+                        <th>PJ</th>
+                        <th>PG</th>
+                        <th>PE</th>
+                        <th>PP</th>
+                        <th>DG</th>
+                        <th>PTS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for posicion in tabla %}
+                    <tr class="table__content">
+                        <td>{{loop.index}}</td>
+                        <td>{{ posicion.teamName }}</td>
+                        <td>{{ posicion.p_jugados }}</td>
+                        <td>{{ posicion.p_ganado }}</td>
+                        <td>{{ posicion.p_empatado }}</td>
+                        <td>{{ posicion.p_perdido}}</td>
+                        <td>{{ posicion.df }}</td>
+                        <td>{{ posicion.puntos }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                
+            </table>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+
+{% block script %}
+
+{% endblock %}

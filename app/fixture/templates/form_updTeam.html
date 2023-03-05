@@ -1,0 +1,19 @@
+{% extends './base.html' %}
+
+{% block main %}
+
+<div class="team__form">
+    <h2 class="team__title">Modificar Datos</h2>
+    <form method="POST" enctype="multipart/form-data" novalidate>
+        {{ form.hidden_tag() }}
+        <div class="team__boxform">
+            {{ form.team.label(class="team__label") }}
+            {{ form.team(class="team__input") }}
+            {{ form.img_logo.label(class="team__label") }}
+            {{ form.img_logo(class="team__input") }}
+            {{ form.submit(class="team__button")|safe }}
+        </div>       
+    </form>
+</div>
+
+{% endblock %}
