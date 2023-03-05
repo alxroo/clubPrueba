@@ -19,7 +19,3 @@ class DevelopmentConfig(Config):
     MAIL_USERNAME = ""
     MAIL_PASSWORD = ""
 
-
-
-
-

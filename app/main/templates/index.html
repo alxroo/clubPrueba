@@ -1,10 +1,211 @@
 {% extends './base.html' %}
 
 {% block main %}
-<h1>INDEXXXXXXXXXXXXXXXXXXXXssss</h1>
+<section class="hero">
+    <div class="hero__slider">
+        <div class="hero__wrapper">
+            <div class="hero__btn hero__btn--left"><img src="/static/assets/icons//arrowLeft.svg" alt=""></div>
+            <div class="hero__img">
+                <img src="/static/assets/imgs/imgSlider1.jpg" alt="">
+            </div>
+            <div class="hero__img">
+                <img src="/static/assets/imgs/imgSlider2.jpg" alt="">
+            </div>
+            <div class="hero__img">
+                <img src="/static/assets/imgs/imgSlider3.jpg" alt="">
+            </div>
+            <div class="hero__img">
+                <img src="/static/assets/imgs/imgSlider5.jpg" alt="">
+            </div>
+            <div class="hero__img">
+                <img src="/static/assets/imgs/imgSlider6.jpg" alt="">
+            </div>
+            <div class="hero__btn hero__btn--right"><img src="/static/assets/icons/arrowRight.svg" alt=""></div>
+        </div>
+    </div>
+</section>
+
+<section class="noticesIndex">
+    <div class="noticesIndex__container">
+        <h2 class="noticesIndex__title">Ultimas Noticias</h2>
+        <div class="noticesIndex__gallery">
+            {% for post in posts %}
+            <div class="noticesIndex__card">
+                        <img class="noticesIndex__img"  src="{{ url_for('notices.get_imgNoti', filename=post.img ) }}">
+                <h3 class="noticesIndex__resume">{{ post.title }}
+                </h3>
+            </div>
+            {% endfor %}
+
+        </div>
+        <a href="{{ url_for('notices.seeNotices') }}" class="btn2 noticesIndex__btn">Ver mas noticias</a>
+    </div> 
+</section>
+
+<section class="fixtureIndex">
+    <div class="fixtureIndex__container">
+        <h2 class="fixtureIndex__title">Fixture y Resultados</h2>
+        <div class="fixtureIndex__tables">
+
+            <article class="fixtureIndex__next">
+                <h3 class="fixtureIndex__titleNext">Proximo Partido</h3>
+                <div class="fixtureIndex__card">
+                    <div class="fixtureIndex__date">
+                        <div class="fixtureIndex__day">Fecha: {{ partido.fecha_hora }}</div>
+                        <div class="fixtureIndex__hour">Hora: Lorem</div>
+                    </div>
+                    <div class="fixtureIndex__vs">
+                        <div class="fixtureIndex__team">
+                            <img class="logo" src="{{ url_for('fixture.get_file', filename=partido.Local.logo ) }}" alt="">
+                            <span class="clubname">{{ partido.Local.teamName }}</span>
+                        </div>
+                        <div class="fixtureIndex__letters">VS</div>
+                        <div class="fixtureIndex__team">
+                            <img class="logo" src="{{ url_for('fixture.get_file', filename=partido.Visita.logo ) }}" alt="">
+                            <span class="clubname">{{ partido.Visita.teamName }}</span>
+                        </div>
+                    </div>
+                    <div class="fixtureIndex__place">Lugar: {{ partido.lugar }}</div>
+                </div>
+                <a href="{{ url_for('fixture.positions') }}" class="fixtureIndex__btnCalendar">Ver Calendario</a>
+            </article>
+
+            <article class="fixtureIndex__last">
+                <h3 class="fixtureIndex__titleLast">Ultimos Partidos</h3>
+                <div class="fixtureIndex__card2">
+                    {% for partido in partidos %}
+                    <div class="fixtureIndex__result">
+                        <div class="result__row1">
+                            <div class="result__teamA">
+                                <img class="result__logo" src="{{ url_for('fixture.get_file', filename=partido.Local.logo ) }}" alt="">
+                                <span class="result__team">{{ partido.Local.teamName }}</span>
+                            </div>
+                            <span class="result__score"><span>{{ partido.golLocal }}</span><span>-</span><span>{{ partido.golVisita }}</span></span>
+                            <div class="result__teamB">
+                                <span class="result__team">{{ partido.Visita.teamName }}</span>
+                                <img class="result__logo" src="{{ url_for('fixture.get_file', filename=partido.Visita.logo ) }}" alt="">
+                            </div>
+                        </div>
+                        <div class="result__row2">
+                            <span class="result__date">Fecha: {{ partido.fecha_hora }}</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <a href="{{ url_for('fixture.positions') }}" class="fixtureIndex__btnCalendar">Ver Tabla de Posiciones</a>
+            </article>
+        </div>
+    </div>
+    
+</section>
+
+<section class="academyIndex">
+    <div class="academyIndex__container">
+        <h2 class="academyIndex__title">Academia</h2>
+        <div class="academyIndex__grid">
+            <div class="academyIndex__img">
+                <img src="/static/assets/imgs/academy1.jpg" alt="">
+            </div>
+            <div class="academyIndex__img">
+                <img src="/static/assets/imgs/academy2.jpg" alt="">
+            </div>
+            <div class="academyIndex__img">
+                <img src="/static/assets/imgs/academy3.jpg" alt="">
+            </div>
+            <div class="academyIndex__img">
+                <img src="/static/assets/imgs/academy4.jpg" alt="">
+            </div>
+            <div class="academyIndex__img">
+                <img src="/static/assets/imgs/academy5.jpg" alt="">
+            </div>
+            <div class="academyIndex__img">
+                <img src="/static/assets/imgs/academy6.jpg" alt="">
+            </div>
+        </div>
+        <a href="{{ url_for('main.academia') }}" class="btn2 academyIndex__btn">Ver Mas</a>
+    </div> 
+</section>
+
+<section class="awards">
+    <div class="awards__container">
+        <h2 class="awards__title">Logros</h2>
+        <div class="awards__list">
+            <div class="awards__card">
+                <img src="/static/assets/imgs/logro1.jpg" alt="">
+                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+            </div>
+            <div class="awards__card">
+                <img src="/static/assets/imgs/logro2.jpg" alt="">
+                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+            </div>
+            <div class="awards__card">
+                <img src="/static/assets/imgs/logro3.jpg" alt="">
+                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+            </div>
+            <div class="awards__card">
+                <img src="/static/assets/imgs/logro4.jpg" alt="">
+                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+            </div>
+        </div>
+    </div>        
+</section>
+
+<section class="store">
+    <h2 class="store__title">Tienda</h2>
+    <div class="store__container">
+        <div class="store__img"><img src="/static/assets/imgs/store1.jpg" alt=""></div>
+        <div class="store__img"><img src="/static/assets/imgs/store2.jpg" alt=""></div>
+        <div class="store__img"><img src="/static/assets/imgs/store3.jpg" alt=""></div>
+        <div class="store__img"><img src="/static/assets/imgs/store4.jpg" alt=""></div>
+        <div class="store__img"><img src="/static/assets/imgs/store5.jpg" alt=""></div>
+    </div>
+    <div class="store__btn">
+        <a href="{{ url_for('main.tienda') }}" class="btn2 blogIndex__btn">Ver mas</a>
+    </div>
+</section>
+
+<section class="blogIndex">
+    <div class="blogIndex__container">
+        <h2 class="blogIndex__title">Blog</h2>
+        <div class="blogIndex__articles">
+            {% for blog in blogs %}
+            <div class="blogIndex__card">
+                <div class="blogIndex__picture">
+                    <img src="{{ url_for('blogs.get_imgBlog', filename=blog.img_blog ) }}" alt="">
+                </div>
+                <div class="blogIndex__description">
+                    <h4 class="description__title">{{ blog.title }}</h4>
+                    <p class="description__resume">{{ blog.body }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <a href="{{ url_for('blogs.see_blog') }}" class="btn2 blogIndex__btn">Ver mas</a>
+
+    </div>
+
+</section>
+
+<section class="brands">
+    <h2 class="brands__title">Marcas-Auspiciadores</h2>
+    <div class="brands__container">
+        <div class="brands__card">
+            <img src="/static/assets/imgs/brand1.png" alt="">
+        </div>
+        <div class="brands__card">
+            <img src="/static/assets/imgs/brand1.png" alt="">
+        </div>
+        <div class="brands__card">
+            <img src="/static/assets/imgs/brand1.png" alt="">
+        </div>
+        <div class="brands__card">
+            <img src="/static/assets/imgs/brand1.png" alt="">
+        </div>
+    </div>
+</section>
 
 {% endblock %}
 
 {% block script %}
-
+<script src="{{ url_for('static', filename='js/sliderIndex.js') }}"></script>
 {% endblock %}
