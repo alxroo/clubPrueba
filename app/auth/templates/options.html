@@ -1,0 +1,25 @@
+{% extends './base.html' %}
+
+{% block main %}
+
+
+<div class="opciones">
+    <div class="opciones__container">
+        <h2 class="opciones__title">Opciones</h2>
+        <ul>
+            <h2>Noticias</h2>
+            <li><a href="{{ url_for('notices.createNotice') }}" class="opciones__link">Agregar Noticias</a></li><br>
+            <h2>Fixture</h2>
+            <li><a href="{{ url_for('fixture.addTeam') }}" class="opciones__link">Equipos</a></li>
+            <li><a href="{{ url_for('fixture.versus') }}" class="opciones__link">Calendario</a></li>
+            <h3>Blog</h3>
+            <li><a href="{{ url_for('blogs.createBlog') }}" class="opciones__link">Añadir Blog</a></li>
+        </ul>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}

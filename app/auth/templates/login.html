@@ -1,0 +1,24 @@
+{% extends './base.html' %}
+
+{% block main %}
+<div class="formLogin form1">
+    <div class="formLogin__container">
+        <h2 class="formLogin__title">Iniciar Sesion</h2>
+        {% from "_macros.html" import render_field %}
+        <form action="" method="POST" novalidate class="formLogin__form">
+                {{ form.hidden_tag() }}
+                <div>{{ form.email(placeholder='Email', class='input') }}</div>
+                {{ render_field(form.email) }}
+                <div>{{ form.password(placeholder='Password', class='input') }}</div>
+                {{ render_field(form.password) }}
+                <div class="input2">{{ form.remember_me.label }}
+                    {{ form.remember_me }}</div>
+                {{ form.submit(class="formLogin__button button1")|safe }}
+        </form>
+        <div class="formLogin__register">
+        <p>No tienes Cuenta</p>
+        <a href="{{ url_for('auth.signup') }}">Registrate aqui</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

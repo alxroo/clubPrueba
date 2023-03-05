@@ -1,0 +1,24 @@
+{% extends './base.html' %}
+
+{% block main %}
+<div class="formRegister">
+    <div class="formRegister__container">
+        <h2  class="formRegister__title">Registrarse</h2>
+        {% from "_macros.html" import render_field %}
+        <form action="" method="POST" novalidate class="formRegister__form">
+            {{ form.hidden_tag() }}
+            <div>{{ form.username(placeholder='Username', class='input') }}</div>
+            {{ render_field(form.username) }}
+            <div>{{ form.email(placeholder='Email', class='input') }}</div>
+            {{ render_field(form.email) }}
+            <div>{{ form.password(placeholder='Password', class='input') }}</div>
+            {{ render_field(form.password) }}
+            <div>{{ form.password2(placeholder='Confirmar password', class='input') }}</div>
+            {{ render_field(form.password2) }}
+            {{ form.submit(class="formRegister__button button1")|safe }}
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

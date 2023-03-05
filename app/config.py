@@ -7,7 +7,7 @@ class Config():
 class DevelopmentConfig(Config):
     DEBUG = True
 
-    #SQLALCHEMY_DATABASE_URI = mysql://root:Al3x0rt1z@localhost/ddbbClub
+    SQLALCHEMY_DATABASE_URI = "mysql://root:Al3x0rt1z@localhost/ddbbclubPrueba"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     UPLOAD_FOLDER = os.path.abspath("./app/uploads/")
