@@ -1,13 +1,13 @@
 import os
 
 class Config():
-    SECRET_KEY = "My_secret_key"
-    FLASKY_ADMIN = "oalxo06@gmail.com"
+    SECRET_KEY = ""
+    FLASKY_ADMIN = ""
 
 class DevelopmentConfig(Config):
     DEBUG = True
 
-    SQLALCHEMY_DATABASE_URI = "mysql://root:Al3x0rt1z@localhost/ddbbclubPrueba"
+    SQLALCHEMY_DATABASE_URI = ""
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     UPLOAD_FOLDER = os.path.abspath("./app/uploads/")
@@ -16,8 +16,8 @@ class DevelopmentConfig(Config):
     MAIL_PORT = 465
     MAIL_USE_SSL = True
     MAIL_USE_TLS = False
-    MAIL_USERNAME = "oalxo06@gmail.com"
-    MAIL_PASSWORD = "pjdjklrmfbxukiid"
+    MAIL_USERNAME = ""
+    MAIL_PASSWORD = ""
 
 
 config = {

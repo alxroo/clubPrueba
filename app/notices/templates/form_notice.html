@@ -1,0 +1,27 @@
+{% extends './base.html' %}
+
+{% block main %}
+<div class="formLogin form1">
+    <div class="formLogin__container">
+        <h2 class="formLogin__title">Agregar Publicacion</h2>
+        {% from "_macros.html" import render_field %}
+        <form action="" method="POST" enctype="multipart/form-data"  novalidate class="formLogin__form">
+            {{ form.hidden_tag() }}
+            <div>{{ form.title(placeholder='Titulo', class='input') }}</div>
+            {{ render_field(form.title) }}
+
+            <div>{{ form.body(placeholder='Contenido', class='input') }}</div>
+            {{ render_field(form.body) }}
+
+            {{ form.img_not() }}
+            {{ form.submit(class="formLogin__button button1")|safe }}
+
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends './base.html' %}
+{% import "_macros.html" as macros %}
+
+{% block main %}
+
+<section class="notices">
+    <div class="notices__container">
+        {% for post in posts %}
+        <article class="notices__article">
+            <h2 class="article__title">{{ post.title }}</h2>
+            <div class="article__date"><span>Fecha de publicacion:</span> {{ post.author.username }}</div>
+            <div class="article__content">
+                <picture class="article__img">
+                    <img src="{{ url_for('notices.get_imgNoti', filename=post.img ) }}">
+                </picture>
+                <p class='article__text'>{{ post.body }}</p>
+                <a href="" class="article__link">seguir leyendo</a>
+            </div>
+        </article>
+        <div class="post__footer">
+            {% if current_user.is_authenticated %}
+            <a href="{{ url_for('notices.editNotice', id=post.id) }}">
+                <span class="label-primary">Editar</span>
+            </a>
+            <a id="btnPostDelete" data-Atributo="{{post.id}}" href="{{ url_for('notices.deleteNotice', id=post.id) }}">
+                <span class="label-primary">Eliminar</span>
+            </a>
+            {% endif %}
+        </div>
+        {% endfor %}
+        
+        
+    </div>                    
+
+</section>
+
+<div class="pagination">
+    {{ macros.pagination_widget(pagination, 'notices.seeNotices') }}
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script src="{{ url_for('static', filename='js/funciones0.js') }}"></script>
+{% endblock %}
