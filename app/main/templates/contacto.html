@@ -1,0 +1,52 @@
+{% extends './base.html' %}
+
+{% block main %}
+<section class="contact">
+    <div class="contact__container">
+        <h2 class="contact__title">Contacto</h2>
+        <form class="contact__form">
+            <input type="text" placeholder="Nombres:">
+            <input type="email" placeholder="Email:">
+            <input type="number" placeholder="Numero:">
+            <textarea name="mensaje" id="" cols="30" rows="10" placeholder="Mensaje:"></textarea>
+            <input type="submit" value="Enviar Mensaje" class="form__btn">
+        </form>
+    </div>
+</section>
+
+<section class="infoContact">
+    <div class="infoContact__container">
+        <div class="infoContact__card">
+            <img src="/static/assets/icons/email.svg" alt="">
+            <span>Direccion de Correo</span>
+            <p>ejemplo@ejemplo.com</p>
+        </div>
+        <div class="infoContact__card">
+            <img src="/static/assets/icons/phone.svg" alt="">
+            <span>Numeros Telefonicos</span>
+            <p>999-999999</p>
+            <p>998-987999</p>
+        </div>
+        <div class="infoContact__card">
+            <img src="/static/assets/icons/map.svg" alt="">
+            <span>Ubicacion</span>
+            <p>Av: Lorem Ipsum</p>
+        </div>
+    </div>
+</section>
+
+<section class="map">
+    <div class="map__container">
+        <h2 class="map__title">Ubicacion</h2>
+        <div class="map__img">
+            <!-- <a href="https://goo.gl/maps/iwv4ecAzTgHi2KUi9"></a> -->
+            <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d249712.8594925407!2d-76.97931!3d-12.0597915!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c5f619ee3ec7%3A0x14206cb9cc452e4a!2sLima!5e0!3m2!1ses!2spe!4v1668460373504!5m2!1ses!2spe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d249712.8594925407!2d-76.97931!3d-12.0597915!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c5f619ee3ec7%3A0x14206cb9cc452e4a!2sLima!5e0!3m2!1ses!2spe!4v1668460373504!5m2!1ses!2spe" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}

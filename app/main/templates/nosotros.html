@@ -1,0 +1,95 @@
+{% extends './base.html' %}
+
+{% block main %}
+
+
+<section class="missionVision">
+    <div class="missionVision__container">
+        <h2 class="missionVision__title">Mision y Vision</h2>
+        <div class="missionVision__flex">
+            <div class="missionVision__mission">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut perspiciatis beatae iste et? Voluptates quos alias dolorum expedita, at fugiat iste laudantium id explicabo officiis quas eveniet earum et nobis!</p>
+            </div>
+            <div class="missionVision__vision">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut perspiciatis beatae iste et? Voluptates quos alias dolorum expedita, at fugiat iste laudantium id explicabo officiis quas eveniet earum et nobis!</p>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+<section class="history">
+    <div class="history__container">
+        <h2 class="history__title">Historia</h2>
+        <div class="history__grid">
+            <div class="history__content">
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias, nam. Iusto nam maiores sint porro, vel optio expedita, quisquam quo veniam debitis eos rem minima corporis eligendi voluptas, eaque error? Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio sit, delectus eaque et repellendus vero nesciunt assumenda non numquam fugit rem commodi error totam, quis, ipsum molestias possimus omnis veritatis. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et consequatur quibusdam provident sunt numquam reprehenderit natus molestiae odio, consequuntur aliquam dignissimos labore magnam! Quasi laboriosam dolorum, repudiandae nobis voluptatum debitis?</p>
+                <button class="btn1 history__btn">Seguir Leyendo...</button>
+            </div>
+            
+            <picture class="history__img">
+                <img src="/static/assets/imgs/historia.jpg" alt="">
+            </picture>
+        </div>
+    </div>
+</section>
+
+<section class="training">
+    <div class="training__container">
+        <h2 class="training__title">Entrenamiento</h2>
+        <div class="training__wraper">
+            <div class="training__slider">
+                <div class="training__card active">
+                    <img src="/static/assets/imgs/training1.jpg" alt="">
+                </div>
+                <div class="training__card">
+                    <img src="/static/assets/imgs/training2.jpg" alt="">
+                </div>
+                <div class="training__card">
+                    <img src="/static/assets/imgs/training3.jpg" alt="">
+                </div>
+                <div class="training__card">
+                    <img src="/static/assets/imgs/training4.jpg" alt="">
+                </div>
+                <div class="training__card">
+                    <img src="/static/assets/imgs/training5.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="players">
+    <div class="players__container">
+        <h2 class="players__title">Jugadores</h2>
+        <div class="players__wraper">
+            <div class="players__card">
+                <img src="/static/assets/imgs/jugadorAvatar3.png" alt="">
+            </div>
+            <div class="players__card">
+                <img src="/static/assets/imgs/jugadorAvatar1.png" alt="">
+            </div>
+            <div class="players__card">
+                <img src="/static/assets/imgs/jugadorAvatar3.png" alt="">
+            </div>
+            <div class="players__card">
+                <img src="/static/assets/imgs/jugadorAvatar2.png" alt="">
+            </div>
+            <div class="players__card">
+                <img src="/static/assets/imgs/jugadorAvatar2.png" alt="">
+            </div>
+            <div class="players__card">
+                <img src="/static/assets/imgs/jugadorAvatar1.png" alt="">
+            </div>
+            <div class="players__card">
+                <img src="/static/assets/imgs/jugadorAvatar3.png" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block script %}
+<script src="{{ url_for('static', filename='js/sliderNosotros.js') }}"></script>
+{% endblock %}
